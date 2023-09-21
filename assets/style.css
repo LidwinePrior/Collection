@@ -1,23 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
-body {
+#container {
   width: 100%;
   margin: auto;
   font-family: "Croissant One", cursive;
 }
-
-header {
+#container header {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
+  margin: 25px;
 }
-header img {
+#container header img {
   align-self: center;
   justify-self: center;
   border-radius: 100%;
   width: 80px;
 }
-
-#globalDiv {
+#container #globalDiv {
   margin: auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -26,37 +25,65 @@ header img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
 }
-#globalDiv #box {
+#container #globalDiv #box {
   background-color: rgb(231, 220, 230);
   border: 1px solid black;
   border-radius: 20px;
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 320px;
 }
-#globalDiv #box p {
+#container #globalDiv #box p {
   padding: 15px;
 }
-#globalDiv #box figure {
+#container #globalDiv #box figure {
   position: relative;
   width: 90%;
   aspect-ratio: 1/1;
 }
-#globalDiv #box figure img {
+#container #globalDiv #box figure img {
   border-radius: 20px;
   height: 100%;
   width: 100%;
   position: absolute;
 }
-@media screen and (min-height: 780px) {
-  #globalDiv #globalDiv {
+#container #globalDiv #box button {
+  border: none;
+  background-color: transparent;
+}
+#container #globalDiv #box button i {
+  color: #e5bde2;
+  font-size: 30px;
+  cursor: pointer;
+}
+@media screen and (min-width: 410px) and (max-width: 780px) {
+  #container #globalDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 780px) and (max-width: 1000px) {
+  #container #globalDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1000px) and (max-width: 1500px) {
+  #container #globalDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1500px) {
+  #container #globalDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-  }
-  #globalDiv #globalDiv #box {
-    width: 40%;
   }
 }/*# sourceMappingURL=style.css.map */
