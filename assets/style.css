@@ -28,7 +28,8 @@
   width: 90%;
 }
 #container #globalDiv #box {
-  background-color: rgb(231, 220, 230);
+  background: rgb(238, 233, 205);
+  background: radial-gradient(circle, rgb(238, 233, 205) 0%, rgba(196, 180, 161, 0.9140133648) 100%);
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
@@ -55,7 +56,7 @@
   background-color: transparent;
 }
 #container #globalDiv #box button i {
-  color: #e5bde2;
+  color: #b3b695;
   font-size: 30px;
   cursor: pointer;
 }

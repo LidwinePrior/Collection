@@ -27,7 +27,8 @@
         align-items: center;
         width: 90%;
         #box {
-            background-color: rgb(231, 220, 230);
+            background: rgb(238,233,205);
+background: radial-gradient(circle, rgba(238,233,205,1) 0%, rgba(196,180,161,0.9140133647798743) 100%);
             border: 1px solid black;
             border-radius: 20px;
             display: flex;
@@ -53,7 +54,7 @@
                 background-color: transparent;
 
                 i {
-                    color: #e5bde2;
+                    color: #b3b695;
                     font-size: 30px;
                     cursor: pointer;
                 }

@@ -15,6 +15,7 @@ const collection = [
     origin: "Mexico",
     land: "Mexico",
     ingredients: ["tortilla", "salad", "meat", "guacamole", "paprika"],
+    //code de langue
     lang: "es-MX",
   },
   {
@@ -25,6 +26,7 @@ const collection = [
     origin: "chinese",
     land: "Japan",
     ingredients: ["nodles", "broth", "meat or fish", "egg", "vegetables"],
+    //code de langue
     lang: "ja-JP",
   },
   {
@@ -35,6 +37,7 @@ const collection = [
     origin: "Chine",
     land: "Germany",
     ingredients: ["cabbage", "porc", "bacon", "sausages", "white wine"],
+    //code de langue
     lang: "de-DE",
   },
   {
@@ -45,6 +48,7 @@ const collection = [
     origin: "Savoie",
     land: "France",
     ingredients: ["potatoes", "onions", "bacon", "roblochon"],
+    //code de langue
     land: "fr-FR",
   },
   {
@@ -55,6 +59,7 @@ const collection = [
     origin: "Valencia",
     land: "Spain",
     ingredients: ["rice", "seafoods", "vegetables"],
+    //code de langue
     lang: "es-ES",
   },
   {
@@ -65,6 +70,7 @@ const collection = [
     origin: "Hambourg",
     land: "Germany",
     ingredients: ["sandwich", "cheese", "steack", "salad", "sauce"],
+    //code de langue
     lang: "de-DE",
   },
   {
@@ -75,6 +81,7 @@ const collection = [
     origin: "Bologne",
     land: "Italy",
     ingredients: ["pasta", "tomato sauce", "ground beef", "carrot"],
+    //code de langue
     lang: "it-IT",
   },
   {
@@ -85,6 +92,7 @@ const collection = [
     origin: "Canton of valais",
     land: "Switzerland",
     ingredients: ["cold cuts", "differents finds of cheese", "potatoes"],
+    //code de langue
     lang: "de-CH",
   },
   {
@@ -95,6 +103,7 @@ const collection = [
     origin: "Japan",
     land: "Japan",
     ingredients: ["rice", "fried chicken or fish"],
+    //code de langue
     lang: "ja-JA",
   },
   {
@@ -105,6 +114,7 @@ const collection = [
     origin: "Alföld",
     land: "Hungary",
     ingredients: ["meat", "vegetables", "paprika"],
+    //code de langue
     lang: "hu-HU",
   },
 ];
@@ -141,6 +151,10 @@ header.appendChild(hDiv);
 const globalDiv = document.createElement("div");
 globalDiv.setAttribute("id", "globalDiv");
 
+//créer une div originalName + icone
+const btnName = document.createElement("div");
+btnName.setAttribute("id", "btnName");
+
 //créer et ajouter 10divs avec le contenu de "collection"
 for (let i = 0; i < 10; i++) {
   const boxDiv = document.createElement("div");
@@ -161,19 +175,6 @@ for (let i = 0; i < 10; i++) {
   //utiliser la propriété name de "collection"
   h2Element.textContent = collectionItem.name;
 
-  //créer boutton play
-  const playBtn = document.createElement("button");
-  const playIcon = document.createElement("i");
-  playIcon.setAttribute("class", "fa-solid fa-circle-play");
-  playBtn.appendChild(playIcon);
-  playBtn.classList.add("PlayBtn");
-  playBtn.addEventListener("click", () => {
-    const synth = window.speechSynthesis;
-    const utterance = new SpeechSynthesisUtterance(collectionItem.originalName);
-    utterance.lang = lang;
-    synth.speak(utterance);
-  });
-
   //créer un div pour tous les p
   const pTotal = document.createElement("div");
   pTotal.setAttribute("id", "pTotal");
@@ -181,6 +182,31 @@ for (let i = 0; i < 10; i++) {
   //créer un tableau pour stocker les <p> avce différentes données
   const pElements = [];
   //créer un paragraphe pour chaque donnée que je souhaite afficher
+  //créer boutton play
+  const playBtn = document.createElement("button");
+  //créer un élément icone <i>
+  const playIcon = document.createElement("i");
+  //ajouter l'icone font-awesome
+  playIcon.setAttribute("class", "fa-solid fa-circle-play");
+  //appeler l'icone sur le bouton
+  playBtn.appendChild(playIcon);
+  //ajoutet un class playbtn
+  playBtn.classList.add("PlayBtn");
+  //rendre le bouton cliquable
+  playBtn.addEventListener("click", () => {
+    //lire le contenu de originalName quand utilisateur clique sur l'icone
+    //créer une instance de l'objet speechsynthesis
+    const synth = window.speechSynthesis;
+    //créer un objet speechsyntisUtterance pour spécifier le texte à lire
+    const utterance = new SpeechSynthesisUtterance(collectionItem.originalName);
+    //définir la langue de l'utterance
+    utterance.lang = lang;
+    //lire le texte en audio
+    synth.speak(utterance);
+  });
+  pElements.push(playBtn);
+
+  //récupérer la valeur de originalName et celle de lang
   const originalNameP = document.createElement("p");
   originalNameP.textContent = `Original name: ${collectionItem.originalName}`;
   const lang = collectionItem.lang;
@@ -205,18 +231,25 @@ for (let i = 0; i < 10; i++) {
   )}`;
   pElements.push(ingredientsP);
 
-  //ajouter h2 à la div box
-  boxDiv.appendChild(h2Element);
+  //ajouter bouton play à la btnName
+  btnName.appendChild(playBtn);
+  //ajouter Originalname à btnName
+  btnName.appendChild(originalNameP);
+
   //ajouter img à figure
   figureElement.appendChild(imgElement);
-  //ajouter img à la div box
-  boxDiv.appendChild(figureElement);
-  //ajouter bouton play à la box
-  boxDiv.appendChild(playBtn);
+
   //ajouter les p stocké dans le tableau  pElements à la div pTotal
   pElements.forEach((pElement) => {
     pTotal.appendChild(pElement);
   });
+  //ajouter btnName à pTotal
+  pTotal.appendChild(btnName);
+
+  //ajouter h2 à la div box
+  boxDiv.appendChild(h2Element);
+  //ajouter figure à la div box
+  boxDiv.appendChild(figureElement);
   //ajouter pTotal à la div box
   boxDiv.appendChild(pTotal);
 
