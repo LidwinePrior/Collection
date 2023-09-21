@@ -8,12 +8,13 @@ let food = subject[1];
 
 const collection = [
   {
-    img: "https://assets.afcdn.com/recipe/20200828/113350_w1024h768c1cx2880cy1920.jpg",
-    name: "Couscous",
-    originalName: "كسكس",
-    origin: "Maghreb",
-    region: "North Africa",
-    ingredients: ["semolina", "vegetables stew", "lamb", "merguez"],
+    img: "https://www.budgetbytes.com/wp-content/uploads/2022/07/Sheet-Pan-Portobello-Fajitas-plate.jpg",
+    name: "Fajita",
+    originalName: "fajita",
+    date: "+/- 1930",
+    region: "Mexico",
+    ingredients: ["tortilla", "salad", "meat", "guacamole", "paprika"],
+    lang: "es-MX",
   },
   {
     img: "https://lacerisesurlemaillot.fr/wp-content/uploads/2021/10/ramen-poulet.jpg",
@@ -22,6 +23,7 @@ const collection = [
     origin: "chinese",
     region: "Japan",
     ingredients: ["nodles", "broth", "meat or fish", "egg", "vegetables"],
+    lang: "ja-JP",
   },
   {
     img: "https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Ffac.2F2018.2F12.2F04.2F7d30685c-0d9c-4ddc-a3ed-f5ed8ac0a48d.2Ejpeg/400x400/quality/80/crop-from/center/focus-point/2382%2C2620/choucroute-garnie.jpeg",
@@ -31,11 +33,12 @@ const collection = [
     origin: "Chine",
     land: "Germany",
     ingredients: ["cabbage", "porc", "bacon", "sausages", "white wine"],
+    lang: "de-DE",
   },
   {
     img: "https://assets.afcdn.com/recipe/20160401/38946_w1024h576c1cx2690cy1793.jpg",
     name: "Tartiflette",
-    originalName: "tartifle",
+    originalName: "Tartiflette",
     date: "+/- 1980",
     origin: "Savoie",
     land: "France",
@@ -49,6 +52,7 @@ const collection = [
     origin: "Valencia",
     land: "Spain",
     ingredients: ["rice", "seafoods", "vegetables"],
+    lang: "es-ES",
   },
   {
     img: "https://www.tupperware.fr/assets/uploads/sites/2/2021/06/tupperware_hamurger-png-940x662.jpeg",
@@ -58,6 +62,7 @@ const collection = [
     origin: "Hambourg",
     land: "Germany",
     ingredients: ["sandwich", "cheese", "steack", "salad", "sauce"],
+    lang: "de-DE",
   },
   {
     img: "https://www.regal.fr/sites/art-de-vivre/files/spaghettis-bolognaise_istock.jpg",
@@ -67,6 +72,7 @@ const collection = [
     origin: "Bologne",
     land: "Italy",
     ingredients: ["pasta", "tomato sauce", "ground beef", "carrot"],
+    lang: "it-IT",
   },
   {
     img: "https://www.darty.com/darty-et-vous/sites/default/files/2022-07/raclette_2021_494.jpg",
@@ -76,6 +82,7 @@ const collection = [
     origin: "Canton of valais",
     land: "Switzerland",
     ingredients: ["cold cuts", "differents finds of cheese", "potatoes"],
+    lang: "de-CH",
   },
   {
     img: "https://media-cdn.tripadvisor.com/media/photo-s/21/f3/69/36/kuro-meny-for-flere.jpg",
@@ -85,6 +92,7 @@ const collection = [
     origin: "Japan",
     land: "Japan",
     ingredients: ["rice", "fried chicken or fish"],
+    lang: "ja-JA",
   },
   {
     img: "https://p1.storage.canalblog.com/13/24/1249553/100024038_m.jpg",
@@ -94,6 +102,7 @@ const collection = [
     origin: "Alföld",
     land: "Hungary",
     ingredients: ["meat", "vegetables", "paprika"],
+    lang: "hu-HU",
   },
 ];
 //selectionner l'élément <body> ou l'on veut ajouter la structur html
@@ -111,7 +120,7 @@ img.setAttribute(
 );
 //créer l'élément h1
 const h1 = document.createElement("h1");
-h1.textContent = "Carême Lidwine";
+h1.textContent = "My food's Collection";
 //créer l'élément p
 const p = document.createElement("p");
 p.textContent = `Je me présente, je m'appelle Lidwine. Je voudrais bien réussir ma vie être aimée, être belle, gagner de l'argent. Mais surtout être intelligente.`;
@@ -126,21 +135,15 @@ header.appendChild(hDiv);
 const globalDiv = document.createElement("div");
 globalDiv.setAttribute("id", "globalDiv");
 
-function getRandomColor() {
-  let letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 //créer et ajouter 10divs avec le contenu de "collection"
 for (let i = 0; i < 10; i++) {
   const boxDiv = document.createElement("div");
   boxDiv.setAttribute("id", "box");
   //ajouter le contenu de "collection dans chaque div box"
   const collectionItem = collection[i];
+
+  //ajouter <figure>
+  const figureElement = document.createElement("figure");
 
   //créer une image
   const imgElement = document.createElement("img");
@@ -152,11 +155,26 @@ for (let i = 0; i < 10; i++) {
   //utiliser la propriété name de "collection"
   h2Element.textContent = collectionItem.name;
 
+  //créer boutton play
+  const playBtn = document.createElement("button");
+  playBtn.textContent = "Play";
+  playBtn.addEventListener("click", () => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(collectionItem.originalName);
+    utterance.lang = lang;
+    synth.speak(utterance);
+  });
+
+  //créer un div pour tous les p
+  const pTotal = document.createElement("div");
+  pTotal.setAttribute("id", "pTotal");
+
   //créer un tableau pour stocker les <p> avce différentes données
   const pElements = [];
   //créer un paragraphe pour chaque donnée que je souhaite afficher
   const originalNameP = document.createElement("p");
   originalNameP.textContent = `Original name: ${collectionItem.originalName}`;
+  const lang = collectionItem.lang;
   pElements.push(originalNameP);
 
   const dateP = document.createElement("p");
@@ -178,17 +196,20 @@ for (let i = 0; i < 10; i++) {
   )}`;
   pElements.push(ingredientsP);
 
-  //ajouter img à la div box
-  boxDiv.appendChild(imgElement);
   //ajouter h2 à la div box
   boxDiv.appendChild(h2Element);
-  //ajouter les p stocké dans le tableau  pElements à la div box
+  //ajouter img à figure
+  figureElement.appendChild(imgElement);
+  //ajouter img à la div box
+  boxDiv.appendChild(figureElement);
+  //ajouter bouton play
+  boxDiv.appendChild(playBtn);
+  //ajouter les p stocké dans le tableau  pElements à la div pTotal
   pElements.forEach((pElement) => {
-    boxDiv.appendChild(pElement);
+    pTotal.appendChild(pElement);
   });
-
-  let backgroundColor = getRandomColor();
-  boxDiv.style.backgroundColor = backgroundColor;
+  //ajouter pTotal à la div box
+  boxDiv.appendChild(pTotal);
 
   //ajouter les div box à la div globale
   globalDiv.appendChild(boxDiv);
