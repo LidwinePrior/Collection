@@ -118,11 +118,14 @@ const collection = [
     lang: "hu-HU",
   },
 ];
+
 //selectionner l'élément <body> ou l'on veut ajouter la structur html
 const body = document.body;
+
 //créer une div container
 const container = document.createElement("div");
 container.setAttribute("id", "container");
+
 //créer le header
 const header = document.createElement("header");
 //créer div dans le header
@@ -147,13 +150,26 @@ hDiv.appendChild(q);
 header.appendChild(img);
 header.appendChild(hDiv);
 
+//créer une div pour le menu dropdown
+const ddMenu = document.createElement("div");
+ddMenu.setAttribute("id", "ddMenu");
+//créer <select>
+const categoryD = document.createElement("select");
+categoryD.setAttribute("id", "categoryD");
+//ajouter options au menu déroulant
+const categories = ["All", "Country", "Meat", "Fish"];
+categories.forEach((category) => {
+  const option = document.createElement("option");
+  //s'assurer que la valeur correspond aux catégories de collection
+  option.value = category.toLowerCase();
+  option.textContent = category;
+  categoryD.appendChild(option);
+});
+ddMenu.appendChild(categoryD);
+
 //créer une div globale
 const globalDiv = document.createElement("div");
 globalDiv.setAttribute("id", "globalDiv");
-
-//créer une div originalName + icone
-const btnName = document.createElement("div");
-btnName.setAttribute("id", "btnName");
 
 //créer et ajouter 10divs avec le contenu de "collection"
 for (let i = 0; i < 10; i++) {
@@ -175,13 +191,10 @@ for (let i = 0; i < 10; i++) {
   //utiliser la propriété name de "collection"
   h2Element.textContent = collectionItem.name;
 
-  //créer un div pour tous les p
-  const pTotal = document.createElement("div");
-  pTotal.setAttribute("id", "pTotal");
+  //créer une div originalName + icone
+  const btnName = document.createElement("div");
+  btnName.setAttribute("id", "btnName");
 
-  //créer un tableau pour stocker les <p> avce différentes données
-  const pElements = [];
-  //créer un paragraphe pour chaque donnée que je souhaite afficher
   //créer boutton play
   const playBtn = document.createElement("button");
   //créer un élément icone <i>
@@ -204,14 +217,17 @@ for (let i = 0; i < 10; i++) {
     //lire le texte en audio
     synth.speak(utterance);
   });
-  pElements.push(playBtn);
-
   //récupérer la valeur de originalName et celle de lang
   const originalNameP = document.createElement("p");
   originalNameP.textContent = `Original name: ${collectionItem.originalName}`;
   const lang = collectionItem.lang;
-  pElements.push(originalNameP);
 
+  //créer un div pour tous les p
+  const pTotal = document.createElement("div");
+  pTotal.setAttribute("id", "pTotal");
+  //créer un tableau pour stocker les <p> avce différentes données
+  const pElements = [];
+  //créer un paragraphe pour chaque donnée que je souhaite afficher
   const dateP = document.createElement("p");
   dateP.textContent = `Date: ${collectionItem.date}`;
   //ajouter le contenu
@@ -243,20 +259,23 @@ for (let i = 0; i < 10; i++) {
   pElements.forEach((pElement) => {
     pTotal.appendChild(pElement);
   });
-  //ajouter btnName à pTotal
-  pTotal.appendChild(btnName);
 
   //ajouter h2 à la div box
   boxDiv.appendChild(h2Element);
   //ajouter figure à la div box
   boxDiv.appendChild(figureElement);
+  //ajouter btnName à la div box
+  boxDiv.appendChild(btnName);
   //ajouter pTotal à la div box
   boxDiv.appendChild(pTotal);
 
   //ajouter les div box à la div globale
   globalDiv.appendChild(boxDiv);
+
   //ajouter le header au container
   container.appendChild(header);
+  //ajouter le dropDown menu au container
+  container.appendChild(ddMenu);
   //ajouter la boxDiv au container
   container.appendChild(globalDiv);
 }

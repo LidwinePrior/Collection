@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
 
+body {
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,0.5900735294117647) 59%, rgba(245,238,210,1) 96%);
+}
+
 #container {
     width: 100%;
     margin: auto;
@@ -27,17 +32,15 @@
         align-items: center;
         width: 90%;
         #box {
-            background: rgb(238,233,205);
-background: radial-gradient(circle, rgba(238,233,205,1) 0%, rgba(196,180,161,0.9140133647798743) 100%);
+            background: rgb(215,207,157);
+            background: radial-gradient(circle, rgba(215,207,157,1) 59%, rgba(245,238,210,1) 96%);
             border: 1px solid black;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 320px;
-            p {
-                padding: 15px;
-            }
+            height: 650px;
             figure {
                 position: relative;
                 width: 90%;
@@ -49,40 +52,51 @@ background: radial-gradient(circle, rgba(238,233,205,1) 0%, rgba(196,180,161,0.9
                     position: absolute;
                 }
             }
-            button {
-                border: none;
-                background-color: transparent;
+            #btnName {
+                display: grid;
+                grid-template-columns: 50% 1fr;
+                grid-template-rows: 1fr;
+                width: 90%;
+                button {
+                    border: none;
+                    background-color: transparent;
+                    order: 2;
 
-                i {
-                    color: #b3b695;
-                    font-size: 30px;
-                    cursor: pointer;
+                    i {
+                        color: #fbf7e7;
+                        font-size: 30px;
+                        cursor: pointer;
+                    }
                 }
+            }
+            #pTotal {
+                width: 90%;
+                order: 1;
             }
         }
     }
-    @media screen and (min-width:410px) and (max-width:780px) {
+    @media screen and (min-width:750px) and (max-width:1200px) {
         #globalDiv {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
             }
     }
-    @media screen and (min-width:780px) and (max-width:1000px) {
+    @media screen and (min-width:1200px) and (max-width:1500px) {
         #globalDiv {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr;
             }
     }
-    @media screen and (min-width:1000px) and (max-width:1500px) {
+    @media screen and (min-width:1500px) and (max-width:1800px) {
         #globalDiv {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
             }
     }
-    @media screen and (min-width: 1500px) {
+    @media screen and (min-width: 1800px) {
         #globalDiv {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

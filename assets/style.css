@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
+body {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5900735294) 59%, rgb(245, 238, 210) 96%);
+}
+
 #container {
   width: 100%;
   margin: auto;
@@ -28,17 +33,15 @@
   width: 90%;
 }
 #container #globalDiv #box {
-  background: rgb(238, 233, 205);
-  background: radial-gradient(circle, rgb(238, 233, 205) 0%, rgba(196, 180, 161, 0.9140133648) 100%);
+  background: rgb(215, 207, 157);
+  background: radial-gradient(circle, rgb(215, 207, 157) 59%, rgb(245, 238, 210) 96%);
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 320px;
-}
-#container #globalDiv #box p {
-  padding: 15px;
+  height: 650px;
 }
 #container #globalDiv #box figure {
   position: relative;
@@ -51,37 +54,48 @@
   width: 100%;
   position: absolute;
 }
-#container #globalDiv #box button {
+#container #globalDiv #box #btnName {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  grid-template-rows: 1fr;
+  width: 90%;
+}
+#container #globalDiv #box #btnName button {
   border: none;
   background-color: transparent;
+  order: 2;
 }
-#container #globalDiv #box button i {
-  color: #b3b695;
+#container #globalDiv #box #btnName button i {
+  color: #fbf7e7;
   font-size: 30px;
   cursor: pointer;
 }
-@media screen and (min-width: 410px) and (max-width: 780px) {
+#container #globalDiv #box #pTotal {
+  width: 90%;
+  order: 1;
+}
+@media screen and (min-width: 750px) and (max-width: 1200px) {
   #container #globalDiv {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
 }
-@media screen and (min-width: 780px) and (max-width: 1000px) {
+@media screen and (min-width: 1200px) and (max-width: 1500px) {
   #container #globalDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
   }
 }
-@media screen and (min-width: 1000px) and (max-width: 1500px) {
+@media screen and (min-width: 1500px) and (max-width: 1800px) {
   #container #globalDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
   }
 }
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1800px) {
   #container #globalDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
