@@ -3,18 +3,26 @@
 To summarize my current knowledge of to create a collection of items.
 
 
+## Project Description
+
+In this project, I will:
+
+   - Create a list (Array) of at least 10 items based on a chosen theme (e.g., music, movies, books).
+   - Define relevant information (Properties) for each item.
+   - Structure the data using JavaScript.
+   - Use JavaScript to create a card for each item.
+   - Populate each card with corresponding properties.
+   - Implement a design using grid and/or flex techniques.
+   - Develop HTML and CSS files for the layout.
+   - Ensure a responsive and visually appealing display of the collection in the HTML body.
+
 
 ## Lessons Learned
 
-What did you need while building this project? 
-
-- HTML and CSS
-- Responsive design
-- Javascript Basics
-- The DOM
-## Documentation
-
-[Documentation](https://github.com/becodeorg/CRL-KELLER-6/blob/main/1.TRAIL/2.The-Hill/1.DOM/4.TheCollection/readme.md)
+- Meaningful HTML and CSS
+- Responsive design principles
+- Basic JavaScript and DOM manipulation
+- Documentation skills
 
 
 ## Author
